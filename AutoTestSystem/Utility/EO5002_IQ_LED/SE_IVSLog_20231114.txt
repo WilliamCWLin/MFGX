@@ -1,0 +1,110 @@
+11/14_15:40:45 	========================================
+11/14_15:40:45 	[Action]
+Item=IntensityCheck_BMP
+[Image]
+Path=C:\Users\dennishuang\Downloads\W\1_W.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=3
+ImageMode=-1
+RAW_BayerPattern=1
+Range_StartFromW=15000
+Range_EndFromW=131072
+Downsample=1
+BMPTarget_Channel_BGRY=4
+Search_Left_Pixel=0
+Search_Top_Pixel=0
+Search_Right_Pixel=1280
+Search_Bottom_Pixel=1024
+[Others]
+ShowLog=0
+11/14_15:40:45 	TBitmapMatrix::CreateFormatData:fopen_s Fail
+11/14_15:40:45 	Load IVS_Time.dll Path
+11/14_15:40:45 	C:\Users\monolu\Desktop\Release_20231020_v2\Release\IVS_Time.dll
+11/14_15:40:45 	DLL_Version=IQ 3,2,3,2 2023,10,18,1500
+STATUS=FAIL
+[ErrorMessage]
+Error=Path:C:\Users\dennishuang\Downloads\W\1_W.bmp, Load image fail. (width:0, height:0)
+11/14_15:40:45 	SE_IVS Time=0.05500000
+
+11/14_15:40:45 	========================================
+11/14_15:41:40 	========================================
+11/14_15:41:40 	[Action]
+Item=IntensityCheck_BMP
+[Image]
+Path=C:\Users\monolu\Desktop\Release_20231020_v2\Release\test_img
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=3
+ImageMode=-1
+RAW_BayerPattern=1
+Range_StartFromW=15000
+Range_EndFromW=131072
+Downsample=1
+BMPTarget_Channel_BGRY=4
+Search_Left_Pixel=0
+Search_Top_Pixel=0
+Search_Right_Pixel=1280
+Search_Bottom_Pixel=1024
+[Others]
+ShowLog=0
+11/14_15:41:40 	Load IVS_Time.dll Path
+11/14_15:41:40 	C:\Users\monolu\Desktop\Release_20231020_v2\Release\IVS_Time.dll
+11/14_15:41:40 	DLL_Version=IQ 3,2,3,2 2023,10,18,1500
+STATUS=FAIL
+[ErrorMessage]
+Error=Load image fail. (width:0, height:0)
+11/14_15:41:40 	SE_IVS Time=0.04100000
+
+11/14_15:41:40 	========================================
+11/14_15:42:20 	========================================
+11/14_15:42:20 	[Action]
+Item=IntensityCheck_BMP
+[Image]
+Path=C:\Users\monolu\Desktop\Release_20231020_v2\Release\test_img\1_W.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=3
+ImageMode=-1
+RAW_BayerPattern=1
+Range_StartFromW=15000
+Range_EndFromW=131072
+Downsample=1
+BMPTarget_Channel_BGRY=4
+Search_Left_Pixel=0
+Search_Top_Pixel=0
+Search_Right_Pixel=1280
+Search_Bottom_Pixel=1024
+[Others]
+ShowLog=0
+11/14_15:42:20 	Load IVS_Time.dll Path
+11/14_15:42:20 	C:\Users\monolu\Desktop\Release_20231020_v2\Release\IVS_Time.dll
+11/14_15:42:20 	DLL_Version=IQ 3,2,3,2 2023,10,18,1500
+STATUS=PASS
+[Result]
+Check_luminance_Blue=31.71383279
+Check_luminance_Green=30.16553519
+Check_luminance_Red=29.08990971
+Check_luminance_Gray=30.01766145
+Max_Value_Blue=255
+Max_Value_Green=251
+Max_Value_Red=255
+Max_Value_Gray=253
+[Time]
+Time_Sort=0.00000000
+Time_Cal=0.00000000
+[Search_Range]
+Rect=0,0,1280,1024
+
+11/14_15:42:20 	SE_IVS Time=0.05400000
+
+11/14_15:42:20 	========================================

@@ -1,0 +1,797 @@
+#----------------------------------------------------------------------------------------
+#  Parameter				Type			Value
+#----------------------------------------------------------------------------------------
+
+GLOBAL_SETTING_VERSION			String			11.0.0
+
+#----------------------------------------------------------------------------------------
+# RUN BUTTON ACCEPT "Enter"     1-- enable   0 --disable
+#----------------------------------------------------------------------------------------
+
+BUTTON_ENABLE                           Integer                 1
+
+#----------------------------------------------------------------------------------------
+# 0-- use default cableloss only for IQtester)   
+#     create file path_loss.csv ¡¢Setup/IQ_atten.txt    
+# 1-- use CableLoss tool support IQxel/IQxel-M/IQxel-MW/ladybug/Anapico ¡¡
+#     create file path_loss.csv  
+#----------------------------------------------------------------------------------------
+
+CABLE_LOSS_MODE                         Integer                   0
+
+#----------------------------------------------------------------------------------------
+# Select IQ tester type
+# IQ2010	: Legacy IQ tester (IQview, IQflex, IQnxn, IQmax, IQ2010)
+# IQxel-M	: 802.11ac muti_port tester  (IQxel-M,IQxel80,IQxel160,IQxel280)  
+# IQxel-MW	: 802.11ax muti_port tester  (IQxel-MW)  
+# IQxstream-5G	: 802.11ax muti_port tester    
+#----------------------------------------------------------------------------------------
+
+IQ_TESTER_TYPE				String			IQxel-MW
+
+#----------------------------------------------------------------------------------------
+# Choose IQxel connection type. Ignored for other testers. *** Only support for IQxel160 ***
+# 0	: Default value for IQxel80
+# 1	:  ROUT1(80MHz)
+# 2	:  ROUT2(80MHz)
+# 3	:  ROUT3(80MHz) /IQxel160 160MHz
+# 4	:  ROUT4(80MHz)
+# Dual head operation cannot work if the type is not 0.
+#----------------------------------------------------------------------------------------
+
+IQXEL_CONNECTION_TYPE			String			0
+
+#------------------------------------
+# Dual head operation of IQ tester
+# 0: Disable, 1: Enable
+#------------------------------------
+
+IQ_DUAL_HEAD_CONTROL			Integer			0
+
+#----------------------------------------------------------------------------------------
+# APT 
+#----------------------------------------------------------------------------------------
+			
+IQ_APT_LOCK_TIMEOUT			String			30
+
+IQ_APT_ISOLATION_GAP              	Integer			80
+
+IQ_APT_CAL_LOCK				Integer			0
+
+IQ_APT_CROSSTALK_CHECK			Integer			0
+	
+#----------------------------------------------------------------------------------------
+# MRU SWITCH   (ONLY FOR IQXEL)
+#----------------------------------------------------------------------------------------
+# 0: Disable, 1: Enable
+#----------------------------------------------------------------------------------------
+			
+MRU_ENABLE			        Integer			0
+
+
+#----------------------------------------------------------------------------------------
+# IP ADDRESS:  192.168.10.250 for MP180 /10.0.254.254 for MP100 
+#----------------------------------------------------------------------------------------
+
+MRU_IP_ADDR				String                  10.0.254.254
+
+#----------------------------------------------------------------------------------------
+# PORT :  1 ~ 4
+#----------------------------------------------------------------------------------------
+
+MRU_PORT                                Integer			1
+
+#------------------------------------
+# Auto Run function
+# Wait for IQ_AUTO_RUN_FILE to start test
+# Test flow file: Test_Flow.txt
+# 0: Disable, 
+# 1: Wait for IQ_AUTO_RUN_FILE to start test
+# 2: Execute test immediately while launching SW
+# 3: Autorun stop by mac barcode
+#------------------------------------
+
+IQ_AUTO_RUN				Integer			2
+
+IQ_AUTO_RUN_FILE_NAME             	String                  123.ini	
+
+#------------------------------------
+# load waveform mode
+# 0--- to upload it from PC 
+# 1--- to upload it from Tester
+#------------------------------------
+
+LOAD_WAVEFORM_MODE		        Integer			0
+
+#------------------------------------
+# The path with VSG waveform and VSA
+# reference files
+#------------------------------------
+
+PER_WAVEFORM_PATH_IQ2010		String			..//mod//IQ2010
+
+PER_WAVEFORM_PATH_IQxel			String			..//mod//IQxel
+
+#------------------------------------
+# TX verify power use analyze power
+# or analyze evm
+# 0 -- analyze power
+# 1 -- analyze evm power
+#------------------------------------
+
+ANALYZE_POWER_TYPE                      Integer			1
+
+#------------------------------------
+# 11p power class
+# A  B   C   D   
+#------------------------------------
+TX_POWER_CLASS_11P			String			C
+
+#------------------------------------
+# The subpath for more VSA band B 
+# reference files. 
+# Set to NONE if no assign.
+#------------------------------------
+
+REF_FILE_SUBPATH			String			BAND_B
+
+#------------------------------------
+# RELOAD DUT DLL operation
+# 0: Disable, 1: Enable
+#------------------------------------
+
+DUT_RELOAD_DLL				Integer			0
+
+#------------------------------------
+# Keep Tx until the configuration
+# changed, 0: OFF, 1: ON
+#------------------------------------
+
+DUT_KEEP_TRANSMIT			Integer			0
+
+
+#------------------------------------
+# Resend DUT Tx command for retry test
+# 0: OFF, 1: ON
+#------------------------------------
+
+DUT_RESEND_TX_COMMAND			Integer			1
+
+#------------------------------------
+# Resend DUT Rx command for retry test
+# 0: OFF, 1: ON
+#------------------------------------
+
+DUT_RESEND_RX_COMMAND			Integer			1
+
+#------------------------------------
+# A delay time for DUT (Cal) settle, 
+# Default = 0(ms)
+#------------------------------------
+
+DUT_CAL_SETTLE_TIME_MS			Integer			0
+
+#------------------------------------
+# A delay time for DUT (TX) settle, 
+# Default = 0(ms)
+#------------------------------------
+
+DUT_TX_SETTLE_TIME_MS			Integer			300
+
+#------------------------------------
+# A delay time for DUT (RX) settle, 
+# Default = 0(ms)
+#------------------------------------
+
+DUT_RX_SETTLE_TIME_MS			Integer			300
+
+
+#------------------------------------
+# Save sig file when capture failed,
+# 0: OFF, 1: ON
+#------------------------------------
+
+VSA_SAVE_CAPTURE_ON_FAILED		Integer			1
+
+#------------------------------------
+# Save sig file, always,
+# 0: OFF, 1: ON
+#------------------------------------
+
+VSA_SAVE_CAPTURE_ALWAYS			Integer			0
+
+#------------------------------------
+# Required minumum number of EVM 
+# measurements.
+#------------------------------------
+
+
+EVM_AVERAGE				Integer			1
+
+
+#------------------------------------
+# Required minumum number of POWER 
+# measurements.
+#------------------------------------
+
+
+POWER_AVERAGE				Integer			1
+
+
+CAL_POWER_AVERAGE			Integer			1
+
+#================================================================================
+#------------------------------------
+# Amplitude Tracking for 802.11 a/g
+# 1: Off; 2: On
+#------------------------------------
+
+ANALYSIS_11AG_AMPL_TRACK		Integer			1
+
+
+#------------------------------------
+# Channel Estimate for 802.11 a/g
+# 1: Long Training Sequence
+# 2: 2nd Order Polyfit
+# 3: Full Packet
+#------------------------------------
+
+ANALYSIS_11AG_CH_ESTIMATE		Integer			3
+
+#------------------------------------
+# Frequency Sync. for 802.11 a/g
+# 1: Short Training Symbol
+# 2: Long Training Symbol
+# 3: Full Data Packet
+#------------------------------------
+
+ANALYSIS_11AG_FREQ_SYNC			Integer			2
+
+
+#------------------------------------
+# Phase Correction Mode for 802.11 a/g
+# 1: Phase Correction Off
+# 2: Symbol-by-symbol Correction
+# 3: Moving Average Correction
+#------------------------------------
+
+ANALYSIS_11AG_PH_CORR_MODE		Integer			2
+
+#------------------------------------
+# Symbol Timing Correction for 802.11 a/g 
+# 1: Off; 2: On
+#------------------------------------
+
+ANALYSIS_11AG_SYM_TIM_CORR		Integer			2
+
+#================================================================================
+#------------------------------------
+# DC removal for 802.11b
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11B_DC_REMOVE_FLAG		Integer			0
+
+#------------------------------------
+# Number of equalizer taps for 802.11b
+# Options are 1,5,7,9
+#------------------------------------
+
+ANALYSIS_11B_EQ_TAPS			Integer			1
+
+#------------------------------------
+# 802.11b method
+# 1: Use 11b standard TX accuracy
+# 2: Use 11b RMS error vector
+#------------------------------------
+
+ANALYSIS_11B_METHOD_11B			Integer			1
+
+#================================================================================
+
+ANALYSIS_11P_PH_CORR_MODE		Integer			2
+
+ANALYSIS_11P_CH_ESTIMATE		Integer			1
+
+ANALYSIS_11P_SYM_TIM_CORR		Integer			2
+
+ANALYSIS_11P_FREQ_SYNC			Integer			2
+
+ANALYSIS_11P_AMPL_TRACK			Integer			1
+
+ANALYSIS_11P_OFDM_MODE			Integer			2
+
+#================================================================================
+
+
+
+#------------------------------------
+# Amplitude Tracking for 802.11n
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11N_AMPLITUDE_TRACKING		Integer			0
+
+#------------------------------------
+# Decode PSDU for 802.11n
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11N_DECODE_PSDU		Integer			0
+
+#------------------------------------
+# Frequency correction for 802.11n
+# 2: short and long legacy training fields
+# 3: full packet
+# 4: signal fields (legacy and HT) in
+#    addition to short and long training fields
+#------------------------------------
+
+ANALYSIS_11N_FREQUENCY_CORRELATION	Integer			2
+
+#------------------------------------
+# Channel Estimate over Full Packet for 802.11n
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11N_FULL_PACKET_CHANNEL_EST	Integer			1
+#------------------------------------
+# Phase Correction for 802.11n
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11N_PHASE_CORR			Integer			1
+
+#------------------------------------
+# Symbol Timing Correction for 802.11n
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11N_SYM_TIMING_CORR		Integer			1
+
+#================================================================================
+#------------------------------------
+# Amplitude Tracking for 802.11ac
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11AC_AMPLITUDE_TRACKING	Integer			0
+
+#------------------------------------
+# Decode PSDU for 802.11ac
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11AC_DECODE_PSDU		Integer			0
+
+#------------------------------------
+# Frequency correction for 802.11ac
+# 2: short and long legacy training fields
+# 3: signal fields (legacy and HT) in
+#    addition to short and long training fields
+# 4: full packet
+#------------------------------------
+
+ANALYSIS_11AC_FREQUENCY_CORRELATION	Integer			3
+
+#------------------------------------
+# Channel Estimate over Full Packet for 802.11ac
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11AC_FULL_PACKET_CHANNEL_EST	Integer			1
+
+#------------------------------------
+# Phase Correction Mode for 802.11ac
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11AC_PHASE_CORR		Integer			1
+
+
+#------------------------------------
+# Symbol Timing Correction for 802.11ac
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11AC_SYM_TIMING_CORR		Integer			1
+
+#==============================================================================
+#------------------------------------
+# Amplitude Tracking for 802.11ax
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11AX_AMPLITUDE_TRACKING	Integer			1
+
+#------------------------------------
+# Decode PSDU for 802.11ax
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11AX_DECODE_PSDU		Integer			1
+
+#------------------------------------
+# Frequency correction for 802.11ax
+# 1: short legacy training fields
+# 2: long legacy training fields
+# 3: whole packet
+# 4: signal fields (legacy and HT) in 
+#    addition to long training fields
+#------------------------------------
+
+ANALYSIS_11AX_FREQUENCY_CORRELATION	Integer			2
+
+#------------------------------------
+# Channel Estimate over Full Packet for 802.11ax
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11AX_FULL_PACKET_CHANNEL_EST	Integer			0
+
+#------------------------------------
+# Phase Correction Mode for 802.11ax
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11AX_PHASE_CORR		Integer			1
+
+
+#------------------------------------
+# Symbol Timing Correction for 802.11ax
+# 0: Off; 1: On
+#------------------------------------
+
+ANALYSIS_11AX_SYM_TIMING_CORR		Integer			1
+
+
+ANALYSIS_11AX_PREAMBLE_AVERAGE 		Integer			1
+
+===============================================================================
+#------------------------------------
+# Capture Time for Tx Test
+#------------------------------------
+
+CAPTURE_TIME_11AG			Integer			100
+
+CAPTURE_TIME_11P			Integer			100
+
+CAPTURE_TIME_11B			Integer			280
+
+CAPTURE_TIME_11N			Integer			150
+
+CAPTURE_TIME_11AC			Integer			300
+
+CAPTURE_TIME_11AX			Integer			300
+
+CAPTURE_TIME_DECT			Integer			1000
+#------------------------------------
+# Maximum number to retry if test failed
+#------------------------------------
+
+RETRY_COUNT				Integer			3
+
+
+#------------------------------------
+# SHOW_RETRY_RESULT
+# 0: disable
+# 1: enable
+#------------------------------------
+
+SHOW_RETRY_RESULT			Integer			1
+
+#------------------------------------
+# Maximum number to retry if IBF test failed
+#------------------------------------
+
+IBF_RETRY_COUNT				Integer			5
+
+
+
+#------------------------------------
+# Muti_Ant Power results for TX_VERIFY_ALL
+# 0: Show seperate power 
+# 1: Show add power
+# 2: Show seperate power & add power
+#------------------------------------
+	
+SHOW_POWER_MODE       			Integer			0	
+
+#------------------------------------
+# Muti_Ant Power results for TX_VERIFY_ALL
+# 0: IQmeasure control tester
+# 1: SCPI command control tester
+#------------------------------------
+
+QCA_CAL_ENABLE                          Integer			0
+
+#------------------------------------
+# Only For QCA TX CAL
+#------------------------------------
+
+VSA_TRIGGER_LEVEL_QCA_CAL               Integer			-35
+ 
+#------------------------------------
+# Console log output
+# 0: DISABLE
+# 1: ENABLE
+#------------------------------------
+
+CONSOLE_OUTPUT_ENABLE                   Integer			0
+
+#------------------------------------
+# Debug log enable
+# 0: DISABLE
+# 1: ENABLE
+#------------------------------------
+
+DEBUG_LOG_ENABLE                        Integer			1               
+
+#------------------------------------
+# Measurement results for TX_VERIFY_ALL
+# 0: Disable
+# 1: Enable
+#------------------------------------
+
+TX_VERIFY_ALL_EVM			Integer			1
+
+TX_VERIFY_ALL_FREQ_ERR			Integer			1
+
+TX_VERIFY_ALL_SYM_CLK_ERR		Integer			1
+
+TX_VERIFY_ALL_POWER			Integer			1
+
+TX_VERIFY_ALL_LO_LEAKAGE		Integer			1
+
+TX_VERIFY_ALL_SPECTRAL_FLATNESS		Integer			0
+
+TX_VERIFY_ALL_MASK			Integer			1
+
+TX_VERIFY_ALL_MARGIN			Integer			0
+TX_VERIFY_ALL_11B_POWER_RAMP	        Integer			0
+
+#------------------------------------
+# TX_VERIFY_ALL save mask image
+#------------------------------------
+
+SAVE_MASK				Integer			0
+
+Draw_Mask                               Integer			1
+
+#------------------------------------
+# TX_SWEEP_CONDITION 
+# P -- POWER  E -- EVM  M -- MASK
+# P_E_M  P_E  P_M  E_M P E M
+# TX_SWEEP_FAIL_TYPE
+# 0 -- one of condition fail
+# 1 -- Condition all fail
+# TX_SWEEP_COUNT
+#------------------------------------
+
+TX_SWEEP_CONDITION          		String			P_E_M
+
+TX_SWEEP_FAIL_TYPE                      Integer			0 
+
+TX_SWEEP_COUNT                     	Integer			20 	
+
+#------------------------------------
+# Measurement results for RX_PER
+# 0: Disable
+# 1: Enable
+#------------------------------------
+
+RX_RSSI          			Integer			0
+
+#------------------------------------
+# Margin Spec
+#------------------------------------
+MARGIN_MAX_1				Double			30
+
+MARGIN_MAX_2				Double			30
+
+MARGIN_MAX_3				Double			30
+
+MARGIN_MAX_4				Double			30
+
+MARGIN_MAX_5				Double			30
+
+MARGIN_MIN_1				Double			0
+
+MARGIN_MIN_2				Double			0
+
+MARGIN_MIN_3				Double			0
+
+MARGIN_MIN_4				Double			0
+
+MARGIN_MIN_5				Double			0
+
+
+#------------------------------------
+# Band Edge
+#------------------------------------
+
+BAND_EDGE				Integer			0
+
+#------------------------------------
+# WIFI rx cal waveform
+# Do not contain file extension
+#------------------------------------
+
+WIFI_RX_CAL_WAVEFORM_NAME		String			RSSI_CAL
+
+
+#------------------------------------
+# WIFI rx verify waveform
+# LDPC type
+#------------------------------------
+
+LDPC_WAVEFORM_ENABLE                    Integer			0
+
+#------------------------------------
+# packets length for bluetooth testing
+#------------------------------------
+
+1DH1_PACKETS_LENGTH			Integer			27
+
+1DH3_PACKETS_LENGTH			Integer			183
+
+1DH5_PACKETS_LENGTH			Integer			339
+
+2DH1_PACKETS_LENGTH			Integer			54
+
+2DH3_PACKETS_LENGTH			Integer			367
+
+2DH5_PACKETS_LENGTH			Integer			679
+
+3DH1_PACKETS_LENGTH			Integer			83
+
+3DH3_PACKETS_LENGTH			Integer			552
+
+3DH5_PACKETS_LENGTH			Integer			1021
+
+1LE_PACKETS_LENGTH			Integer			37
+
+2LE_PACKETS_LENGTH			Integer			37
+
+LE500K_PACKETS_LENGTH			Integer			80
+
+LE125K_PACKETS_LENGTH			Integer			99
+#------------------------------------
+# VSA trigger level for bluetooth signal
+#------------------------------------
+
+VSA_TRIGGER_LEVEL_BT			Integer			-18
+
+#------------------------------------
+# BT_BT_RX_BER transmit mode
+# 0: continue
+# 1: packet
+#------------------------------------
+
+BT_BER_MODE				Integer	                0	
+
+#------------------------------------
+# Measurement results for BT_TX
+# 0: Disable
+# 1: Enable
+#------------------------------------
+
+BT_ACP_RESULT				Integer	                0					
+
+#------------------------------------
+# Bluetooth waveform
+# Do not contain file extension
+#------------------------------------
+
+BER_1DH1_WAVEFORM_NAME			String			1DH1_000088C0FFEE
+
+BER_1DH3_WAVEFORM_NAME			String			1DH3_000088C0FFEE
+
+BER_1DH5_WAVEFORM_NAME			String			1DH5_000088C0FFEE
+
+BER_2DH1_WAVEFORM_NAME			String			2DH1_000088C0FFEE
+
+BER_2DH3_WAVEFORM_NAME			String			2DH3_000088C0FFEE
+
+BER_2DH5_WAVEFORM_NAME			String			2DH5_000088C0FFEE
+
+BER_3DH1_WAVEFORM_NAME			String			3DH1_000088C0FFEE
+
+BER_3DH3_WAVEFORM_NAME			String			3DH3_000088C0FFEE
+
+BER_3DH5_WAVEFORM_NAME			String			3DH5_000088C0FFEE
+
+BER_1LE_WAVEFORM_NAME			String			1LE
+
+BER_1LE_PRI_WAVEFORM_NAME		String			1LE_PRI	
+
+BER_2LE_WAVEFORM_NAME			String			2LE
+
+BER_LE500K_WAVEFORM_NAME		String			LE500K
+
+BER_LE125K_WAVEFORM_NAME		String			LE125K
+
+BER_LE_RSSI_RESULT			Integer	                0
+#------------------------------------
+
+ZIGBEE_OQPSK_WAVEFORM_NAME		String 			zigbee1
+
+ZIGBEE_RX_GAP_TIME			Integer			50
+
+ZIGBEE_RSSI_RESULT			Integer	                1	
+
+#------------------------------------
+# Wisun rx gap time(ms)
+#------------------------------------
+
+WISUN_RX_GAP_TIME			Integer			50
+
+#------------------------------------
+# Wisun waveform
+# Do not contain file extension
+#------------------------------------
+
+WISUN_MOD2FSK_WAVEFORM_NAME			String			MOD_2FSK
+WISUN_MOD4FSK_WAVEFORM_NAME			String			MOD_4FSK
+
+#------------------------------------
+# Zwave rx gap time(ms)
+#------------------------------------
+
+ZWAVE_RX_GAP_TIME			Integer			50
+
+#------------------------------------
+# Zwave waveform
+# Do not contain file extension
+#------------------------------------
+
+CER_R1_WAVEFORM_NAME			String			ZWAVE_R1
+CER_R2_WAVEFORM_NAME			String			ZWAVE_R2
+CER_R3_WAVEFORM_NAME			String			ZWAVE_R3
+
+#------------------------------------
+# DECT waveform
+# Do not contain file extension
+#------------------------------------
+
+BER_DECT_WAVEFORM_NAME			String			DECT_DL_RxTestAteDspg_2ms_Fs10M
+
+DECT_FREQ_DRIFT_RESULT			Integer	                1
+
+DECT_TIMING_ACCURACY_RESULT		Integer	                1
+
+DECT_FREG_OFFSET_RESULT			Integer	                1
+
+DECT_POWER_RESULT			Integer	                1
+
+DECT_B_FIELD_DEV_NEG_RESULT		Integer	                1
+
+DECT_B_FIELD_DEV_POS_RESULT		Integer	                1
+
+DECT_POWER_VS_TIME_RESULT		Integer	                1
+
+DECT_RSSI_RESULT			Integer	                1
+TESTER_PING_COUNT                       Integer			20
+
+CSV_CUSTOMIZATION_ENABLE		Integer			0
+
+CHECK_WIFI_TX_DATARATE                  Integer			0
+
+JSON_LOG_ENABLE 			Integer			1
+#------------------------------------
+# Measurement results for CELLULAR_TX
+# 0: Disable
+# 1: Enable
+#------------------------------------
+
+CELLULAR_TX_POWER			Integer			1
+ 					
+CELLULAR_TX_FREQERR			Integer			1
+
+
+
+
+
+  
+
+

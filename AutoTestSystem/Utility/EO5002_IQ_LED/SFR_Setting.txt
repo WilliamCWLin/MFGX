@@ -1,0 +1,12 @@
+version:20230705
+Threshold_SFR_UpperBound = 200
+Threshold_WhiteBlackDiffer = 10
+Shift_Scale = 10
+MTF50_Output_Method = 1
+Offset_value = 50
+CornerScaleSearch = 1
+SunChartCenter_Offset_value = 15
+CenterBinaryThreshold = 100
+
+
+

@@ -1,0 +1,803 @@
+5/7_14:59:35 	========================================
+5/7_14:59:35 	BM6
+5/7_14:59:35 	Load IVS_Time.dll Path
+5/7_14:59:35 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_14:59:35 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=FAIL
+[ErrorMessage]
+Error=Action Item= (Unknown Item)
+5/7_14:59:35 	SE_IVS Time=0.11000000
+
+5/7_14:59:35 	========================================
+5/7_15:4:5 	========================================
+5/7_15:4:5 	BM6
+5/7_15:4:5 	Load IVS_Time.dll Path
+5/7_15:4:5 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_15:4:5 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=FAIL
+[ErrorMessage]
+Error=Action Item=<»ï (Unknown Item)
+5/7_15:4:5 	SE_IVS Time=0.05600000
+
+5/7_15:4:5 	========================================
+5/7_15:5:4 	========================================
+5/7_15:5:4 	[Action]
+Item=IntensityCheck_BMP
+[Image]
+Path=C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED_check\test_img\B_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=3
+ImageMode=-1
+RAW_BayerPattern=1
+Range_StartFromW=0
+Range_EndFromW=1000
+Downsample=1
+BMPTarget_Channel_BGRY=4
+Search_Left_Pixel=0
+Search_Top_Pixel=0
+Search_Right_Pixel=640
+Search_Bottom_Pixel=1024
+[Others]
+ShowLog=0
+5/7_15:5:4 	TBitmapMatrix::CreateFormatData:fopen_s Fail
+5/7_15:5:4 	Load IVS_Time.dll Path
+5/7_15:5:4 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_15:5:4 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=FAIL
+[ErrorMessage]
+Error=Path:C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED_check\test_img\B_W1234_2000.bmp, Load image fail. (width:0, height:0)
+5/7_15:5:4 	SE_IVS Time=0.09400000
+
+5/7_15:5:4 	========================================
+5/7_15:8:7 	========================================
+5/7_15:8:7 	[Action]
+Item=IntensityCheck_BMP
+[Image]
+Path=C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED_check\test_img\B_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=3
+ImageMode=-1
+RAW_BayerPattern=1
+Range_StartFromW=0
+Range_EndFromW=1000
+Downsample=1
+BMPTarget_Channel_BGRY=4
+Search_Left_Pixel=0
+Search_Top_Pixel=0
+Search_Right_Pixel=640
+Search_Bottom_Pixel=1024
+[Others]
+ShowLog=0
+5/7_15:8:7 	TBitmapMatrix::CreateFormatData:fopen_s Fail
+5/7_15:8:7 	Load IVS_Time.dll Path
+5/7_15:8:7 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_15:8:7 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=FAIL
+[ErrorMessage]
+Error=Path:C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED_check\test_img\B_W1234_2000.bmp, Load image fail. (width:0, height:0)
+5/7_15:8:7 	SE_IVS Time=0.03200000
+
+5/7_15:8:7 	========================================
+5/7_15:14:57 	========================================
+5/7_15:14:57 	[Action]
+Item=LEDTest_BMP
+[Image]
+Path=C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED_check\test_img\B_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=2
+Method=1
+OBValue=0
+Binary_Threshold=20
+Sample_BinaryTH_Channel=200
+Area_Threshold=100
+Merge_Distance=0
+ShowDataNum=6
+DebugMode=0
+Search_Top_Pixel=0
+Search_Bottom_Pixel=1024
+Search_Left_Pixel=0
+Search_Right_Pixel=640
+[Others]
+ShowLog=0
+5/7_15:14:57 	TBitmapMatrix::CreateFormatData:fopen_s Fail
+5/7_15:14:57 	Load IVS_Time.dll Path
+5/7_15:14:57 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_15:14:57 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=FAIL
+[ErrorMessage]
+Error=Path:C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED_check\test_img\B_W1234_2000.bmp, Load image fail. (width:0, height:0)
+5/7_15:14:57 	SE_IVS Time=0.06300000
+
+5/7_15:14:57 	========================================
+5/7_15:16:29 	========================================
+5/7_15:16:29 	[Action]
+Item=LEDTest_BMP
+[Image]
+Path=C:\\Users\\brianchern\\Desktop\\MFGX\\AutoTestSystem\\Utility\\EO5007_IQ_LED_check\\test_img\\B_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=2
+Method=1
+OBValue=0
+Binary_Threshold=20
+Sample_BinaryTH_Channel=200
+Area_Threshold=100
+Merge_Distance=0
+ShowDataNum=6
+DebugMode=0
+Search_Top_Pixel=0
+Search_Bottom_Pixel=1024
+Search_Left_Pixel=0
+Search_Right_Pixel=640
+[Others]
+ShowLog=0
+5/7_15:16:29 	TBitmapMatrix::CreateFormatData:fopen_s Fail
+5/7_15:16:29 	Load IVS_Time.dll Path
+5/7_15:16:29 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_15:16:29 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=FAIL
+[ErrorMessage]
+Error=Path:C:\\Users\\brianchern\\Desktop\\MFGX\\AutoTestSystem\\Utility\\EO5007_IQ_LED_check\\test_img\\B_W1234_2000.bmp, Load image fail. (width:0, height:0)
+5/7_15:16:29 	SE_IVS Time=0.04700000
+
+5/7_15:16:29 	========================================
+5/7_15:17:8 	========================================
+5/7_15:17:8 	[Action]
+Item=LEDTest_BMP
+[Image]
+Path=C:/Users/brianchern/Desktop/MFGX/AutoTestSystem/Utility/EO5007_IQ_LED_check/test_img/B_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=2
+Method=1
+OBValue=0
+Binary_Threshold=20
+Sample_BinaryTH_Channel=200
+Area_Threshold=100
+Merge_Distance=0
+ShowDataNum=6
+DebugMode=0
+Search_Top_Pixel=0
+Search_Bottom_Pixel=1024
+Search_Left_Pixel=0
+Search_Right_Pixel=640
+[Others]
+ShowLog=0
+5/7_15:17:8 	TBitmapMatrix::CreateFormatData:fopen_s Fail
+5/7_15:17:8 	Load IVS_Time.dll Path
+5/7_15:17:8 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_15:17:8 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=FAIL
+[ErrorMessage]
+Error=Path:C:/Users/brianchern/Desktop/MFGX/AutoTestSystem/Utility/EO5007_IQ_LED_check/test_img/B_W1234_2000.bmp, Load image fail. (width:0, height:0)
+5/7_15:17:8 	SE_IVS Time=0.09500000
+
+5/7_15:17:8 	========================================
+5/7_15:19:17 	========================================
+5/7_15:19:17 	[Action]
+Item=LEDTest_BMP
+[Image]
+Path=C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED_check\test_img\B_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=2
+Method=1
+OBValue=0
+Binary_Threshold=20
+Sample_BinaryTH_Channel=200
+Area_Threshold=100
+Merge_Distance=0
+ShowDataNum=6
+DebugMode=0
+Search_Top_Pixel=0
+Search_Bottom_Pixel=1024
+Search_Left_Pixel=0
+Search_Right_Pixel=640
+[Others]
+ShowLog=0
+5/7_15:19:17 	TBitmapMatrix::CreateFormatData:fopen_s Fail
+5/7_15:19:17 	Load IVS_Time.dll Path
+5/7_15:19:17 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_15:19:17 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=FAIL
+[ErrorMessage]
+Error=Path:C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED_check\test_img\B_W1234_2000.bmp, Load image fail. (width:0, height:0)
+5/7_15:19:17 	SE_IVS Time=0.06200000
+
+5/7_15:19:17 	========================================
+5/7_15:21:16 	========================================
+5/7_15:21:16 	[Action]
+Item=LEDTest_BMP
+[Image]
+Path=C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\test_img\B_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=2
+Method=1
+OBValue=0
+Binary_Threshold=20
+Sample_BinaryTH_Channel=200
+Area_Threshold=100
+Merge_Distance=0
+ShowDataNum=6
+DebugMode=0
+Search_Top_Pixel=0
+Search_Bottom_Pixel=1024
+Search_Left_Pixel=0
+Search_Right_Pixel=640
+[Others]
+ShowLog=00
+5/7_15:21:16 	Load IVS_Time.dll Path
+5/7_15:21:16 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_15:21:16 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=PASS
+[Result]
+DetectCount=1
+BrightPixelCount=399
+[Result1]
+Area=399.00
+BrighterPixel_MeanR=13.30
+BrighterPixel_MeanG=51.58
+BrighterPixel_MeanB=145.01
+BrighterPixel_MeanY=50.78
+Sample_MeanR=8.92
+Sample_MeanG=25.62
+Sample_MeanB=82.60
+Sample_MeanY=27.12
+Sample_BG_Ratio=3.22
+Sample_RG_Ratio=0.35
+Sample_Count=247
+Rect=69,481,93,502
+Width=24
+Height=21
+[Result2]
+Area=-1
+BrighterPixel_MeanR=-1
+BrighterPixel_MeanG=-1
+BrighterPixel_MeanB=-1
+BrighterPixel_MeanY=-1
+Sample_MeanB=-1
+Sample_MeanG=-1
+Sample_MeanR=-1
+Sample_MeanY=-1
+Sample_BG_Ratio=-1
+Sample_RG_Ratio=-1
+Sample_Count=-1
+Rect=-1,-1,-1,-1
+Width=-1
+Height=-1
+[Result3]
+Area=-1
+BrighterPixel_MeanR=-1
+BrighterPixel_MeanG=-1
+BrighterPixel_MeanB=-1
+BrighterPixel_MeanY=-1
+Sample_MeanB=-1
+Sample_MeanG=-1
+Sample_MeanR=-1
+Sample_MeanY=-1
+Sample_BG_Ratio=-1
+Sample_RG_Ratio=-1
+Sample_Count=-1
+Rect=-1,-1,-1,-1
+Width=-1
+Height=-1
+[Result4]
+Area=-1
+BrighterPixel_MeanR=-1
+BrighterPixel_MeanG=-1
+BrighterPixel_MeanB=-1
+BrighterPixel_MeanY=-1
+Sample_MeanB=-1
+Sample_MeanG=-1
+Sample_MeanR=-1
+Sample_MeanY=-1
+Sample_BG_Ratio=-1
+Sample_RG_Ratio=-1
+Sample_Count=-1
+Rect=-1,-1,-1,-1
+Width=-1
+Height=-1
+[Result5]
+Area=-1
+BrighterPixel_MeanR=-1
+BrighterPixel_MeanG=-1
+BrighterPixel_MeanB=-1
+BrighterPixel_MeanY=-1
+Sample_MeanB=-1
+Sample_MeanG=-1
+Sample_MeanR=-1
+Sample_MeanY=-1
+Sample_BG_Ratio=-1
+Sample_RG_Ratio=-1
+Sample_Count=-1
+Rect=-1,-1,-1,-1
+Width=-1
+Height=-1
+[Result6]
+Area=-1
+BrighterPixel_MeanR=-1
+BrighterPixel_MeanG=-1
+BrighterPixel_MeanB=-1
+BrighterPixel_MeanY=-1
+Sample_MeanB=-1
+Sample_MeanG=-1
+Sample_MeanR=-1
+Sample_MeanY=-1
+Sample_BG_Ratio=-1
+Sample_RG_Ratio=-1
+Sample_Count=-1
+Rect=-1,-1,-1,-1
+Width=-1
+Height=-1
+
+5/7_15:21:16 	SE_IVS Time=0.06200000
+
+5/7_15:21:16 	========================================
+5/7_15:34:47 	========================================
+5/7_15:34:47 	[Action]
+Item=LEDTest_BMP
+[Image]
+Path=C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\test_img\B_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=2
+Method=1
+OBValue=0
+Binary_Threshold=20
+Sample_BinaryTH_Channel=200
+Area_Threshold=100
+Merge_Distance=0
+ShowDataNum=2
+DebugMode=0
+Search_Top_Pixel=0
+Search_Bottom_Pixel=1024
+Search_Left_Pixel=0
+Search_Right_Pixel=640
+[Others]
+ShowLog=00
+5/7_15:34:47 	Load IVS_Time.dll Path
+5/7_15:34:47 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_15:34:47 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=PASS
+[Result]
+DetectCount=1
+BrightPixelCount=399
+[Result1]
+Area=399.00
+BrighterPixel_MeanR=13.30
+BrighterPixel_MeanG=51.58
+BrighterPixel_MeanB=145.01
+BrighterPixel_MeanY=50.78
+Sample_MeanR=8.92
+Sample_MeanG=25.62
+Sample_MeanB=82.60
+Sample_MeanY=27.12
+Sample_BG_Ratio=3.22
+Sample_RG_Ratio=0.35
+Sample_Count=247
+Rect=69,481,93,502
+Width=24
+Height=21
+[Result2]
+Area=-1
+BrighterPixel_MeanR=-1
+BrighterPixel_MeanG=-1
+BrighterPixel_MeanB=-1
+BrighterPixel_MeanY=-1
+Sample_MeanB=-1
+Sample_MeanG=-1
+Sample_MeanR=-1
+Sample_MeanY=-1
+Sample_BG_Ratio=-1
+Sample_RG_Ratio=-1
+Sample_Count=-1
+Rect=-1,-1,-1,-1
+Width=-1
+Height=-1
+
+5/7_15:34:47 	SE_IVS Time=0.09300000
+
+5/7_15:34:47 	========================================
+5/7_15:36:23 	========================================
+5/7_15:36:23 	[Action]
+Item=IntensityCheck_BMP
+[Image]
+Path=C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED_check\test_img\B_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=3
+ImageMode=-1
+RAW_BayerPattern=1
+Range_StartFromW=0
+Range_EndFromW=1000
+Downsample=1
+BMPTarget_Channel_BGRY=4
+Search_Left_Pixel=0
+Search_Top_Pixel=0
+Search_Right_Pixel=640
+Search_Bottom_Pixel=1024
+[Others]
+ShowLog=0
+5/7_15:36:23 	TBitmapMatrix::CreateFormatData:fopen_s Fail
+5/7_15:36:23 	Load IVS_Time.dll Path
+5/7_15:36:23 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_15:36:23 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=FAIL
+[ErrorMessage]
+Error=Path:C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED_check\test_img\B_W1234_2000.bmp, Load image fail. (width:0, height:0)
+5/7_15:36:23 	SE_IVS Time=0.04700000
+
+5/7_15:36:23 	========================================
+5/7_15:37:6 	========================================
+5/7_15:37:6 	[Action]
+Item=IntensityCheck_BMP
+[Image]
+Path=C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\test_img\B_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=3
+ImageMode=-1
+RAW_BayerPattern=1
+Range_StartFromW=0
+Range_EndFromW=1000
+Downsample=1
+BMPTarget_Channel_BGRY=4
+Search_Left_Pixel=0
+Search_Top_Pixel=0
+Search_Right_Pixel=640
+Search_Bottom_Pixel=1024
+[Others]
+ShowLog=0
+5/7_15:37:6 	Load IVS_Time.dll Path
+5/7_15:37:6 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_15:37:6 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=PASS
+[Result]
+Check_luminance_Blue=63.75000000
+Check_luminance_Green=24.60400000
+Check_luminance_Red=10.55200000
+Check_luminance_Gray=24.71000000
+Max_Value_Blue=255
+Max_Value_Green=119
+Max_Value_Red=30
+Max_Value_Gray=107
+[Time]
+Time_Sort=0.00000000
+Time_Cal=0.00000000
+[Search_Range]
+Rect=0,0,640,1024
+
+5/7_15:37:6 	SE_IVS Time=0.09500000
+
+5/7_15:37:6 	========================================
+5/7_15:57:47 	========================================
+5/7_15:57:47 	[Action]
+Item=IntensityCheck_BMP
+[Image]
+Path=C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\test_img\B_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=3
+ImageMode=-1
+RAW_BayerPattern=1
+Range_StartFromW=0
+Range_EndFromW=1000
+Downsample=1
+BMPTarget_Channel_BGRY=4
+Search_Left_Pixel=0
+Search_Top_Pixel=0
+Search_Right_Pixel=640
+Search_Bottom_Pixel=1024
+[Others]
+ShowLog=0
+5/7_15:57:47 	Load IVS_Time.dll Path
+5/7_15:57:47 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_15:57:47 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=PASS
+[Result]
+Check_luminance_Blue=63.75000000
+Check_luminance_Green=24.60400000
+Check_luminance_Red=10.55200000
+Check_luminance_Gray=24.71000000
+Max_Value_Blue=255
+Max_Value_Green=119
+Max_Value_Red=30
+Max_Value_Gray=107
+[Time]
+Time_Sort=0.00000000
+Time_Cal=0.00000000
+[Search_Range]
+Rect=0,0,640,1024
+
+5/7_15:57:47 	SE_IVS Time=0.04000000
+
+5/7_15:57:47 	========================================
+5/7_15:59:22 	========================================
+5/7_15:59:22 	[Action]
+Item=LEDTest_BMP
+[Image]
+Path=C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\test_img\B_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=2
+Method=1
+OBValue=0
+Binary_Threshold=20
+Sample_BinaryTH_Channel=200
+Area_Threshold=100
+Merge_Distance=0
+ShowDataNum=2
+DebugMode=0
+Search_Top_Pixel=0
+Search_Bottom_Pixel=1024
+Search_Left_Pixel=0
+Search_Right_Pixel=640
+[Others]
+ShowLog=00
+5/7_15:59:22 	Load IVS_Time.dll Path
+5/7_15:59:22 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_15:59:22 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=PASS
+[Result]
+DetectCount=1
+BrightPixelCount=399
+[Result1]
+Area=399.00
+BrighterPixel_MeanR=13.30
+BrighterPixel_MeanG=51.58
+BrighterPixel_MeanB=145.01
+BrighterPixel_MeanY=50.78
+Sample_MeanR=8.92
+Sample_MeanG=25.62
+Sample_MeanB=82.60
+Sample_MeanY=27.12
+Sample_BG_Ratio=3.22
+Sample_RG_Ratio=0.35
+Sample_Count=247
+Rect=69,481,93,502
+Width=24
+Height=21
+[Result2]
+Area=-1
+BrighterPixel_MeanR=-1
+BrighterPixel_MeanG=-1
+BrighterPixel_MeanB=-1
+BrighterPixel_MeanY=-1
+Sample_MeanB=-1
+Sample_MeanG=-1
+Sample_MeanR=-1
+Sample_MeanY=-1
+Sample_BG_Ratio=-1
+Sample_RG_Ratio=-1
+Sample_Count=-1
+Rect=-1,-1,-1,-1
+Width=-1
+Height=-1
+
+5/7_15:59:22 	SE_IVS Time=0.08800000
+
+5/7_15:59:22 	========================================
+5/7_16:0:8 	========================================
+5/7_16:0:8 	[Action]
+Item=LEDTest_BMP
+[Image]
+Path=test_img\B_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=2
+Method=1
+OBValue=0
+Binary_Threshold=20
+Sample_BinaryTH_Channel=200
+Area_Threshold=100
+Merge_Distance=0
+ShowDataNum=2
+DebugMode=0
+Search_Top_Pixel=0
+Search_Bottom_Pixel=1024
+Search_Left_Pixel=0
+Search_Right_Pixel=640
+[Others]
+ShowLog=0
+5/7_16:0:8 	Load IVS_Time.dll Path
+5/7_16:0:8 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_16:0:8 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=PASS
+[Result]
+DetectCount=1
+BrightPixelCount=399
+[Result1]
+Area=399.00
+BrighterPixel_MeanR=13.30
+BrighterPixel_MeanG=51.58
+BrighterPixel_MeanB=145.01
+BrighterPixel_MeanY=50.78
+Sample_MeanR=8.92
+Sample_MeanG=25.62
+Sample_MeanB=82.60
+Sample_MeanY=27.12
+Sample_BG_Ratio=3.22
+Sample_RG_Ratio=0.35
+Sample_Count=247
+Rect=69,481,93,502
+Width=24
+Height=21
+[Result2]
+Area=-1
+BrighterPixel_MeanR=-1
+BrighterPixel_MeanG=-1
+BrighterPixel_MeanB=-1
+BrighterPixel_MeanY=-1
+Sample_MeanB=-1
+Sample_MeanG=-1
+Sample_MeanR=-1
+Sample_MeanY=-1
+Sample_BG_Ratio=-1
+Sample_RG_Ratio=-1
+Sample_Count=-1
+Rect=-1,-1,-1,-1
+Width=-1
+Height=-1
+
+5/7_16:0:8 	SE_IVS Time=0.05300000
+
+5/7_16:0:8 	========================================
+5/7_16:3:22 	========================================
+5/7_16:3:22 	[Action]
+Item=LEDTest_BMP
+[Image]
+Path=test_img\O_W1234_2000.bmp
+Address=0
+Width=0
+Height=0
+Format=SE_BMP
+[Parameters]
+Channel=3
+Method=1
+OBValue=0
+Binary_Threshold=20
+Sample_BinaryTH_Channel=200
+Area_Threshold=100
+Merge_Distance=0
+ShowDataNum=5
+DebugMode=0
+Search_Top_Pixel=0
+Search_Bottom_Pixel=1024
+Search_Left_Pixel=600
+Search_Right_Pixel=1280
+[Others]
+ShowLog=0
+5/7_16:3:22 	Load IVS_Time.dll Path
+5/7_16:3:22 	C:\Users\brianchern\Desktop\MFGX\AutoTestSystem\Utility\EO5007_IQ_LED\IVS_Time.dll
+5/7_16:3:22 	DLL_Version=IQ 3,2,3,12 2024,4,16,0100
+STATUS=PASS
+[Result]
+DetectCount=4
+BrightPixelCount=1594
+[Result1]
+Area=295.00
+BrighterPixel_MeanR=165.77
+BrighterPixel_MeanG=168.11
+BrighterPixel_MeanB=170.48
+BrighterPixel_MeanY=167.68
+Sample_MeanR=71.55
+Sample_MeanG=76.37
+Sample_MeanB=82.27
+Sample_MeanY=75.60
+Sample_BG_Ratio=1.08
+Sample_RG_Ratio=0.94
+Sample_Count=139
+Rect=1051,480,1066,502
+Width=15
+Height=22
+[Result2]
+Area=367.00
+BrighterPixel_MeanR=168.35
+BrighterPixel_MeanG=171.54
+BrighterPixel_MeanB=173.70
+BrighterPixel_MeanY=170.83
+Sample_MeanR=77.93
+Sample_MeanG=83.23
+Sample_MeanB=89.31
+Sample_MeanY=82.34
+Sample_BG_Ratio=1.07
+Sample_RG_Ratio=0.94
+Sample_Count=175
+Rect=1073,474,1088,502
+Width=15
+Height=28
+[Result3]
+Area=442.00
+BrighterPixel_MeanR=160.37
+BrighterPixel_MeanG=168.71
+BrighterPixel_MeanB=169.94
+BrighterPixel_MeanY=166.35
+Sample_MeanR=76.29
+Sample_MeanG=85.84
+Sample_MeanB=90.01
+Sample_MeanY=83.46
+Sample_BG_Ratio=1.05
+Sample_RG_Ratio=0.89
+Sample_Count=220
+Rect=1095,469,1110,502
+Width=15
+Height=33
+[Result4]
+Area=490.00
+BrighterPixel_MeanR=138.31
+BrighterPixel_MeanG=151.85
+BrighterPixel_MeanB=150.66
+BrighterPixel_MeanY=147.67
+Sample_MeanR=86.58
+Sample_MeanG=98.73
+Sample_MeanB=99.89
+Sample_MeanY=95.23
+Sample_BG_Ratio=1.01
+Sample_RG_Ratio=0.88
+Sample_Count=313
+Rect=1117,464,1131,502
+Width=14
+Height=38
+[Result5]
+Area=-1
+BrighterPixel_MeanR=-1
+BrighterPixel_MeanG=-1
+BrighterPixel_MeanB=-1
+BrighterPixel_MeanY=-1
+Sample_MeanB=-1
+Sample_MeanG=-1
+Sample_MeanR=-1
+Sample_MeanY=-1
+Sample_BG_Ratio=-1
+Sample_RG_Ratio=-1
+Sample_Count=-1
+Rect=-1,-1,-1,-1
+Width=-1
+Height=-1
+
+5/7_16:3:22 	SE_IVS Time=0.08200000
+
+5/7_16:3:22 	========================================

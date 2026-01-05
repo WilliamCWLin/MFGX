@@ -1,0 +1,15 @@
+{
+	"white list station": "AutoTestSystem",
+	"white list date": "2024/01/12",
+	"white list version": "2.6.0.0",
+	"whitelist app": "AutoTestSystem",
+	"APP path": "AutoTestSystem.exe",
+	"APP configs": [ "Param\\CLFT.ini", "Param\\Main.ini" ],
+	"Test DLL path": ["IhmHoneycrispDLL.dll"],
+	"Test Script path": ["CA_FT_limit.json"],
+	"common DLLs": ["Honeycrisp.ToolKit.dll","PB_DataBaseKits.dll"],
+	"dep exe path": ["N/A"],
+	"fw bin path": ["N/A"],
+	"device connector": ["N/A"],
+	"server connector": [ "log4net.dll", "SajetConnect.dll", "Terminal.exe" ]
+}

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="AutoTestSystem.DUT.DUT_BASE" Collapsed="true">
+    <Position X="0.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAgAAAAAAAAAgAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>DUT\DUT_BASE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AutoTestSystem.DUT.DUT_EC5002" Collapsed="true">
+    <Position X="0.5" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACAAIAAgAAAAIAAAAAAAAAEIAAACAAAAQAA=</HashCode>
+      <FileName>DUT\DUT_EC5002.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoTestSystem.Equipment.Motion.MotionBase" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACEAgAApAAAAAASAAAIAAAAAAAAKAAAAAAA=</HashCode>
+      <FileName>Equipment\Motion\MotionBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoTestSystem.Equipment.IO.IOBase" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAABAABAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Equipment\IO\IOBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoTestSystem.Equipment.CCD.CCDBase" Collapsed="true">
+    <Position X="5.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAABAAAAAAAAAAAAAAAAABACAAAAAAA=</HashCode>
+      <FileName>Equipment\CCD\CCDBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoTestSystem.Equipment.IO.Adv_DAQ" Collapsed="true">
+    <Position X="8.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAABAABAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Equipment\IO\Adv_DAQ.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoTestSystem.Equipment.CCD.HikVision" Collapsed="true">
+    <Position X="4.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAABAAAAAAAAAAAAAAAAABACAAAAAAA=</HashCode>
+      <FileName>Equipment\CCD\HikVision.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoTestSystem.Equipment.CCD.Basler" Collapsed="true">
+    <Position X="6.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAABAAAAAAAAAAAAAAAAABACAAAAAAA=</HashCode>
+      <FileName>Equipment\CCD\Basler.cs</FileName>
+      <NewMemberFileName>Equipment\CCD\HikVision.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoTestSystem.Equipment.Motion.Arduino" Collapsed="true">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACEAgAApAAAAAASAAAIAAAAAAAAKAAAAAAA=</HashCode>
+      <FileName>Equipment\Motion\Arduino.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoTestSystem.Equipment.Motion.Advantech" Collapsed="true">
+    <Position X="6.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACEAgAApAAAAAASAAAIAAAAAAAAKAAAAAAA=</HashCode>
+      <FileName>Equipment\Motion\Advantech.cs</FileName>
+      <NewMemberFileName>Equipment\Motion\Arduino.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft JhengHei UI" Size="9" />
+</ClassDiagram>

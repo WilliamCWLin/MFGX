@@ -1,0 +1,36 @@
+[
+  {
+    "SeqItems": [
+      {
+        "NodeIcon": "apps.png",
+        "ItemName": "checkworkID",
+        "TestKeyword": null,
+        "ErrorCode": null,
+        "RetryTimes": "2",
+        "TimeOut": null,
+        "SubStr1": null,
+        "SubStr2": null,
+        "IfElse": null,
+        "For": null,
+        "Mode": null,
+        "ComdSend": "{\n    \"Cmd\":\"C001\",\n    \"Data\":\"ATE\",\n    \"Terminal\":\"10001293\",\n    \"CheckStr\":\"OK;\"  ,  \n    \"URL\":\"http://10.24.97.221:8000/api/mes@1/transfer\"\n          \n}",
+        "ExpectStr": null,
+        "CheckStr1": null,
+        "CheckStr2": null,
+        "Spec": "",
+        "Limit_min": null,
+        "Limit_max": null,
+        "unit": null,
+        "Bypass": null,
+        "DllPlugin": null,
+        "StriptType": "Script_HTTPMESCmd_Related",
+        "DeviceName": "HTTPMESCommand",
+        "DC_Hardware": null,
+        "SpecRule": "{\n    \"specParams\": [\n        {\n            \"Name\": \"data\",\n            \"SpecType\": \"Equal\",\n            \"SpecValue\": \"OK;ATE\"\n        }\n    ]\n}"
+      }
+    ],
+    "NodeIcon": "closebox.png",
+    "SeqName": "MES",
+    "TotalNumber": "1"
+  }
+]

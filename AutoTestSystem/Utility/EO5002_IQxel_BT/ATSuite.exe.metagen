@@ -1,0 +1,142 @@
+  ATSuite.AboutForm.resources - Embedded, ContainedInManifestFile, 
+  ATSuite.CableLossForm.resources - Embedded, ContainedInManifestFile, 
+  ATSuite.ConfigForm.resources - Embedded, ContainedInManifestFile, 
+  ATSuite.MacForm.resources - Embedded, ContainedInManifestFile, 
+  ATSuite.MainForm.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly ATSuite, Version=1.0.*, Culture=不因語言而異 (不因國別而異): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly CheckBoxComboBox, Version=1.0.*, Culture=不因語言而異 (不因國別而異): 
+	hash=None, flags=None
+Assembly System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60: 
+	hash=None, flags=None
+Assembly mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class ATSuite.MacForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Label maclabel1 : Public
+    System.Windows.Forms.Label maclabel2 : Public
+    System.Windows.Forms.Label maclabel4 : Public
+    System.Windows.Forms.Label maclabel3 : Public
+    System.Windows.Forms.Label maclabel6 : Public
+    System.Windows.Forms.Label maclabel5 : Public
+    System.Windows.Forms.TextBox scanBox : Public
+    System.Windows.Forms.TextBox scanBox1 : Public
+    System.Windows.Forms.TextBox scanBox2 : Public
+    System.Windows.Forms.TextBox scanBox5 : Public
+    System.Windows.Forms.TextBox scanBox4 : Public
+    System.Windows.Forms.TextBox scanBox3 : Public
+    Boolean status : Public
+    Int32 textLength : Public
+    Int32 flag : Public
+Class ATSuite.AboutForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class ATSuite.ConfigForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Collections.Generic.List`1[System.String] paraArray : Public
+    System.Collections.Generic.List`1[System.String] itemArray : Public
+    System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]] flowArray : Public
+    System.Windows.Forms.ComboBox tempComboBox : Public
+    Boolean loadFlag : Public
+    Int32 Modify_Index : Public
+  Methods:
+    Config_Load(): PrivateScope, Public, HideBySig
+    Flow_Load(): PrivateScope, Public, HideBySig
+    Parse_Csv(String): PrivateScope, Public, HideBySig
+    ContextMenu_Loading(): PrivateScope, Public, HideBySig
+Class ATSuite.CableLossForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    test_channel_count(): PrivateScope, Public, HideBySig
+    prepare(): PrivateScope, Public, HideBySig
+    setvsavsg(Int32, Int32): PrivateScope, Public, HideBySig
+    end_tester(): PrivateScope, Public, HideBySig
+Class ATSuite.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 csvCustCount : Public
+    Int32 csvCustFlag : Public
+    Int32 jsonLogEnable : Public
+    ATSuite.MacForm macForm IsByValue : Public, InitOnly
+    ATSuite.MacForm serialForm IsByValue : Public, InitOnly
+    ATSuite.AboutForm aboutForm IsByValue : Public, InitOnly
+    ATSuite.ConfigForm configForm IsByValue : Public, InitOnly
+    ATSuite.CableLossForm cablelossForm IsByValue : Public, InitOnly
+    Boolean bAutorunExit : Public
+    Boolean runFinish : Public
+    Boolean failFlag : Public
+    Boolean loadFlag : Public
+    Boolean breakFlag : Public
+    Boolean stopFlag : Public
+    Int32 valuePassedDUT : Public
+    Int32 valueFailedDUT : Public
+    Int32 valueTotalDUT : Public
+    Int32 testCount : Public
+    Int32 resultIndex : Public
+    Int32 procIndex : Public
+    System.String testTitle : Public
+    System.String strTestTime : Public
+    System.String macAddr : Public
+    System.String macAddrLast : Public
+    System.String macSet : Public
+    System.String[] macValue : Public
+    System.String[] macLastValue : Public
+    System.String[] macSetValue : Public
+    System.String[] macTechnology : Public
+    System.String[] macStep : Public
+    System.String[] macScanValue : Public
+    System.String[] macName : Public
+    System.String[] macSFValue : Public
+    Int32 macNum : Public
+    Int32 macQRcodeStart : Public
+    Int32 macQRcodeLength : Public
+    Int32 macSource : Public
+    Int32 ConsoleOutputEnable : Public
+    Int32 macbarcodeauto : Public
+    Int32 XtalFailFlag : Public
+    System.DateTime testStartTime : Public
+    System.DateTime totalTestTime : Public
+    System.Threading.Thread ExcuteSystem : Public
+    System.Windows.Forms.TreeNode TestData : Public
+  Methods:
+    System_Loading(): PrivateScope, Public, HideBySig
+    System_Excute(): PrivateScope, Public, HideBySig
+    System_Stop(): PrivateScope, Public, HideBySig
+    Parse_Flow(String): PrivateScope, Public, HideBySig
+    Check_Status(): PrivateScope, Public, HideBySig
+    Write_Log(String): PrivateScope, Public, HideBySig
+    Write_Log_Excel_csv(String): PrivateScope, Public, HideBySig
+    Write_Log_Summary(String): PrivateScope, Public, HideBySig
+    Write_DebugLog(String): PrivateScope, Public, HideBySig
+    Write_enablebat(String): PrivateScope, Public, HideBySig
+    Write_disablebat(String): PrivateScope, Public, HideBySig
+    Write_Excel(String): PrivateScope, Public, HideBySig
+    Write_JsonLog(String): PrivateScope, Public, HideBySig
+    Draw_Mask(Int32, Double*, Double*, Double*, String): PrivateScope, Public, HideBySig
+    Draw_Spectrum(Int32, Double*, Double*): PrivateScope, Public, HideBySig
+    Draw_DECT(Int32, Double*, Double*, Double*, String): PrivateScope, Public, HideBySig
+    MAC_Increase(): PrivateScope, Public, HideBySig
+    Read_MAC_Config(): PrivateScope, Public, HideBySig
+    MAC_File_Increase(Int32): PrivateScope, Public, HideBySig
+    READ_MAC_FILE(): PrivateScope, Public, HideBySig
+    extractUINT16(String): PrivateScope, Public, HideBySig
+    Write_csv_cust_Log(String): PrivateScope, Public, HideBySig

@@ -1,0 +1,69 @@
+name: AutoTestSystem - Release (net472)
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+# 讓 GITHUB_TOKEN 有建立 Release / 上傳資產權限
+permissions:
+  contents: write
+
+env:
+  SOLUTION_FILE: AutoTestSystem.sln
+  BUILD_CONFIGURATION: Release
+  BUILD_PLATFORM: "Any CPU"   # 若你專案是 x86，改成 "x86"
+
+jobs:
+  build_and_release:
+    runs-on: windows-2022  # 建議固定版本，避免 windows-latest 映像更新造成不穩定 :contentReference[oaicite:0]{index=0}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2  # 把 msbuild 加到 PATH :contentReference[oaicite:1]{index=1}
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2        # 讓 nuget.exe 可用 :contentReference[oaicite:2]{index=2}
+
+      - name: Restore NuGet packages
+        shell: pwsh
+        run: nuget restore "${{ env.SOLUTION_FILE }}" -NonInteractive
+
+      - name: Build (Release)
+        shell: pwsh
+        run: msbuild "${{ env.SOLUTION_FILE }}" /m /p:Configuration="${{ env.BUILD_CONFIGURATION }}" /p:Platform="${{ env.BUILD_PLATFORM }}"
+
+      - name: Package (zip)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          # 找到最終輸出的 AutoTestSystem.exe（避免你有多專案/多路徑）
+          $exe = Get-ChildItem -Path . -Recurse -Filter "AutoTestSystem.exe" |
+                 Where-Object { $_.FullName -match "\\bin\\.*\\${{ env.BUILD_CONFIGURATION }}\\" } |
+                 Select-Object -First 1
+
+          if (-not $exe) {
+            throw "找不到 AutoTestSystem.exe。請確認專案輸出名稱/路徑，或改成直接 Copy-Item 你的 bin\\Release 資料夾。"
+          }
+
+          $srcDir = Split-Path $exe.FullName -Parent
+          Write-Host "Packaging from: $srcDir"
+
+          New-Item -ItemType Directory -Force -Path dist | Out-Null
+          Copy-Item -Recurse -Force "$srcDir\*" dist\
+
+          $zipName = "AutoTestSystem-${{ github.ref_name }}.zip"
+          if (Test-Path $zipName) { Remove-Item $zipName -Force }
+          Compress-Archive -Path dist\* -DestinationPath $zipName -Force
+
+          Write-Host "Created: $zipName"
+
+      - name: Create GitHub Release + upload asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: AutoTestSystem-${{ github.ref_name }}.zip

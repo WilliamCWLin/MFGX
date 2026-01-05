@@ -1,0 +1,14 @@
+//***************************   DUT SETTING   *******************************
+
+
+BT_COM_PORT		= 7
+
+BT_BAUD_RATE            = 115200
+ 
+BT_DELAY_TIME           = 300                          # ms
+
+BT_MAC_DELAY_TIME       = 200                            # ms
+
+
+
+
