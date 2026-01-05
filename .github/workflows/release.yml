@@ -4,10 +4,9 @@ on:
   push:
     tags:
       - "v*"
-      - "V*"	  
+      - "V*"
   workflow_dispatch:
 
-# 讓 GITHUB_TOKEN 有建立 Release / 上傳資產權限
 permissions:
   contents: write
 
@@ -18,21 +17,57 @@ env:
 
 jobs:
   build_and_release:
-    runs-on: windows-2022  # 建議固定版本，避免 windows-latest 映像更新造成不穩定 :contentReference[oaicite:0]{index=0}
+    runs-on: windows-2022
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2  # 把 msbuild 加到 PATH :contentReference[oaicite:1]{index=1}
+        uses: microsoft/setup-msbuild@v2
 
       - name: Setup NuGet
-        uses: NuGet/setup-nuget@v2        # 讓 nuget.exe 可用 :contentReference[oaicite:2]{index=2}
+        uses: NuGet/setup-nuget@v2
 
       - name: Restore NuGet packages
         shell: pwsh
         run: nuget restore "${{ env.SOLUTION_FILE }}" -NonInteractive
+
+      # ====== 新增：Tag 版本寫入 AssemblyInfo.cs（只在 tag 觸發時執行）======
+      - name: Stamp version from tag (AssemblyVersion / FileVersion)
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          # 支援 v / V 開頭，且必須是 4 碼數字版本：v3.0.0.6
+          $ver = "${{ github.ref_name }}" -replace '^[vV]', ''
+
+          if ($ver -notmatch '^\d+\.\d+\.\d+\.\d+$') {
+            throw "Tag 版本必須是 4 碼：v3.0.0.6 這種格式。你目前是：${{ github.ref_name }}"
+          }
+
+          $asm = "AutoTestSystem\Properties\AssemblyInfo.cs"
+          if (-not (Test-Path $asm)) {
+            throw "找不到 $asm（請確認 AssemblyInfo.cs 路徑）"
+          }
+
+          $c = Get-Content $asm -Raw
+
+          if ($c -notmatch 'AssemblyVersion\(".*?"\)') {
+            throw "$asm 內找不到 [assembly: AssemblyVersion(""..."")]"
+          }
+          if ($c -notmatch 'AssemblyFileVersion\(".*?"\)') {
+            throw "$asm 內找不到 [assembly: AssemblyFileVersion(""..."")]"
+          }
+
+          $c = [regex]::Replace($c, 'AssemblyVersion\(".*?"\)', "AssemblyVersion(`"$ver`")")
+          $c = [regex]::Replace($c, 'AssemblyFileVersion\(".*?"\)', "AssemblyFileVersion(`"$ver`")")
+
+          Set-Content -Path $asm -Value $c -Encoding UTF8
+
+          Write-Host "Stamped AssemblyVersion / AssemblyFileVersion => $ver"
+      # ===================================================================
 
       - name: Build (Release)
         shell: pwsh
@@ -76,8 +111,8 @@ jobs:
 
           Write-Host "Created: $zipName"
 
-
       - name: Create GitHub Release + upload asset
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           files: AutoTestSystem-${{ github.ref_name }}.zip
