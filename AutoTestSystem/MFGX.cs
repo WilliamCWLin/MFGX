@@ -740,7 +740,7 @@ namespace AutoTestSystem
         }
         private void HomeBtn_ClickAsync(object sender, EventArgs e)
         {
-            //***************鎖機***************
+            \//***************鎖機***************
             //string abort_flag = INIHelper.Readini("CountNum", "ABORT_FLAG", Global.IniConfigFile);
             //if (abort_flag == "1")
             //{
