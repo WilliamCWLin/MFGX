@@ -13,7 +13,6 @@ env:
   SOLUTION_FILE: AutoTestSystem.sln
   PROJECT_FILE: AutoTestSystem/AutoTestSystem.csproj
   BUILD_CONFIGURATION: Release
-  BUILD_PLATFORM: "Any CPU"   # 若你專案是 x86，改成 "x86"
 
 jobs:
   build_and_release:
@@ -35,40 +34,74 @@ jobs:
         shell: pwsh
         run: nuget restore "${{ env.SOLUTION_FILE }}" -NonInteractive
 
-      - name: Build (Release -> out)
+      - name: Build (Release -> out) with platform auto-detect
         shell: pwsh
         run: |
           $ErrorActionPreference = "Stop"
+
+          $proj = "${{ env.PROJECT_FILE }}"
+          $cfg  = "${{ env.BUILD_CONFIGURATION }}"
+
+          if (-not (Test-Path $proj)) {
+            throw "找不到 PROJECT_FILE：$proj（請確認 AutoTestSystem/AutoTestSystem.csproj 路徑）"
+          }
+
+          # 讀 csproj，抓出該 Configuration 下有哪些 Platform（例如 AnyCPU/x86/x64/Any CPU）
+          $xml = Get-Content $proj -Raw
+          $rx  = "Condition\s*=\s*""\s*'\$\(\s*Configuration\s*\)\|\$\(\s*Platform\s*\)'\s*==\s*'$cfg\|([^']+)'\s*"""
+          $platforms = [regex]::Matches($xml, $rx) | ForEach-Object { $_.Groups[1].Value } | Select-Object -Unique
+
+          if (-not $platforms -or $platforms.Count -eq 0) {
+            # 抓不到就用常見候選，後面照偏好挑
+            $platforms = @("AnyCPU","Any CPU","x86","x64")
+          }
+
+          $pref = @("AnyCPU","Any CPU","x86","x64")
+          $plat = ($pref | Where-Object { $platforms -contains $_ } | Select-Object -First 1)
+          if (-not $plat) { $plat = $platforms[0] }
+
+          Write-Host "Detected platforms for $cfg: $($platforms -join ', ')"
+          Write-Host "Using platform: $plat"
 
           $out = Join-Path $env:GITHUB_WORKSPACE "out\"
           New-Item -ItemType Directory -Force -Path $out | Out-Null
 
-          # 直接 build 專案，並指定 OutDir，避免輸出散落在 bin\Release/x86\Release 等各種路徑
-          msbuild "${{ env.PROJECT_FILE }}" /m `
-            /p:Configuration="${{ env.BUILD_CONFIGURATION }}" `
-            /p:Platform="${{ env.BUILD_PLATFORM }}" `
+          # 同時指定 BaseOutputPath/OutputPath/OutDir，避免 _CheckForInvalidConfigurationAndPlatform 擋住
+          msbuild $proj /m `
+            /p:Configuration="$cfg" `
+            /p:Platform="$plat" `
+            /p:BaseOutputPath="$out" `
+            /p:OutputPath="$out" `
             /p:OutDir="$out"
 
-      - name: Verify output
+      - name: Verify output (find exe)
         shell: pwsh
         run: |
           $ErrorActionPreference = "Stop"
-          Write-Host "=== out directory listing ==="
-          Get-ChildItem "$env:GITHUB_WORKSPACE\out" -Force | Format-Table Name, Length
+          $out = Join-Path $env:GITHUB_WORKSPACE "out\"
 
-          if (-not (Test-Path "$env:GITHUB_WORKSPACE\out\AutoTestSystem.exe")) {
-            Write-Host "=== Found EXEs under out ==="
-            Get-ChildItem "$env:GITHUB_WORKSPACE\out" -Recurse -Filter "*.exe" | Select-Object -First 50 FullName
-            throw "out\AutoTestSystem.exe 不存在。請確認 AutoTestSystem.csproj 的 <AssemblyName> 是否不是 AutoTestSystem，或輸出類型/平台設定不同。"
+          Write-Host "=== out directory listing ==="
+          Get-ChildItem $out -Force | Format-Table Name, Length
+
+          $exe = Get-ChildItem $out -Recurse -Filter "*.exe" | Select-Object -First 1
+          if (-not $exe) {
+            throw "out 資料夾內找不到任何 .exe。請檢查專案 OutputType/或是否實際產出在別處。"
           }
+
+          Write-Host "Will package EXE: $($exe.FullName)"
+          "EXE_PATH=$($exe.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
       - name: Package (zip)
         shell: pwsh
         run: |
           $ErrorActionPreference = "Stop"
+          $out = Join-Path $env:GITHUB_WORKSPACE "out\"
+
+          # workflow_dispatch 沒有 tag 時 github.ref_name 會是分支名；仍可產出 zip 供下載
           $zipName = "AutoTestSystem-${{ github.ref_name }}.zip"
           if (Test-Path $zipName) { Remove-Item $zipName -Force }
-          Compress-Archive -Path "$env:GITHUB_WORKSPACE\out\*" -DestinationPath $zipName -Force
+
+          Compress-Archive -Path "$out\*" -DestinationPath $zipName -Force
           Write-Host "Created: $zipName"
 
       - name: Upload artifact (zip)
