@@ -46,13 +46,17 @@ jobs:
             throw "找不到 PROJECT_FILE：$proj（請確認 AutoTestSystem/AutoTestSystem.csproj 路徑）"
           }
 
-          # 讀 csproj，抓出該 Configuration 下有哪些 Platform（例如 AnyCPU/x86/x64/Any CPU）
+          # 讀 csproj，抓出該 Configuration 下有哪些 Platform（AnyCPU / Any CPU / x86 / x64）
           $xml = Get-Content $proj -Raw
-          $rx  = "Condition\s*=\s*""\s*'\$\(\s*Configuration\s*\)\|\$\(\s*Platform\s*\)'\s*==\s*'$cfg\|([^']+)'\s*"""
-          $platforms = [regex]::Matches($xml, $rx) | ForEach-Object { $_.Groups[1].Value } | Select-Object -Unique
+
+          # 解析條件： '$(Configuration)|$(Platform)' == 'Release|x86' 之類
+          $rx = "['""]\s*\$\(\s*Configuration\s*\)\|\$\(\s*Platform\s*\)\s*['""]\s*==\s*['""]$cfg\|([^'""]+)['""]"
+          $matches = [regex]::Matches($xml, $rx)
+          $platforms = @()
+          foreach ($m in $matches) { $platforms += $m.Groups[1].Value }
+          $platforms = $platforms | Select-Object -Unique
 
           if (-not $platforms -or $platforms.Count -eq 0) {
-            # 抓不到就用常見候選，後面照偏好挑
             $platforms = @("AnyCPU","Any CPU","x86","x64")
           }
 
@@ -60,58 +64,8 @@ jobs:
           $plat = ($pref | Where-Object { $platforms -contains $_ } | Select-Object -First 1)
           if (-not $plat) { $plat = $platforms[0] }
 
-          Write-Host "Detected platforms for $cfg: $($platforms -join ', ')"
-          Write-Host "Using platform: $plat"
+          Write-Host ("Detected platforms for {0}: {1}" -f $cfg, ($platforms -join ", "))
+          Write-Host ("Using platform: {0}" -f $plat)
 
           $out = Join-Path $env:GITHUB_WORKSPACE "out\"
           New-Item -ItemType Directory -Force -Path $out | Out-Null
-
-          # 同時指定 BaseOutputPath/OutputPath/OutDir，避免 _CheckForInvalidConfigurationAndPlatform 擋住
-          msbuild $proj /m `
-            /p:Configuration="$cfg" `
-            /p:Platform="$plat" `
-            /p:BaseOutputPath="$out" `
-            /p:OutputPath="$out" `
-            /p:OutDir="$out"
-
-      - name: Verify output (find exe)
-        shell: pwsh
-        run: |
-          $ErrorActionPreference = "Stop"
-          $out = Join-Path $env:GITHUB_WORKSPACE "out\"
-
-          Write-Host "=== out directory listing ==="
-          Get-ChildItem $out -Force | Format-Table Name, Length
-
-          $exe = Get-ChildItem $out -Recurse -Filter "*.exe" | Select-Object -First 1
-          if (-not $exe) {
-            throw "out 資料夾內找不到任何 .exe。請檢查專案 OutputType/或是否實際產出在別處。"
-          }
-
-          Write-Host "Will package EXE: $($exe.FullName)"
-          "EXE_PATH=$($exe.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-
-      - name: Package (zip)
-        shell: pwsh
-        run: |
-          $ErrorActionPreference = "Stop"
-          $out = Join-Path $env:GITHUB_WORKSPACE "out\"
-
-          # workflow_dispatch 沒有 tag 時 github.ref_name 會是分支名；仍可產出 zip 供下載
-          $zipName = "AutoTestSystem-${{ github.ref_name }}.zip"
-          if (Test-Path $zipName) { Remove-Item $zipName -Force }
-
-          Compress-Archive -Path "$out\*" -DestinationPath $zipName -Force
-          Write-Host "Created: $zipName"
-
-      - name: Upload artifact (zip)
-        uses: actions/upload-artifact@v4
-        with:
-          name: AutoTestSystem-${{ github.ref_name }}
-          path: AutoTestSystem-${{ github.ref_name }}.zip
-
-      - name: Create GitHub Release + upload asset
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v2
-        with:
-          files: AutoTestSystem-${{ github.ref_name }}.zip
