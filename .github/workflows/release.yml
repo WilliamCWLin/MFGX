@@ -11,6 +11,7 @@ permissions:
   contents: write
 
 env:
+  SOLUTION_FILE: AutoTestSystem.sln
   PROJECT_FILE: AutoTestSystem/AutoTestSystem.csproj
   BUILD_CONFIGURATION: Release
 
@@ -30,9 +31,9 @@ jobs:
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v2
 
-      - name: Restore NuGet packages
-        shell: pwsh
-        run: nuget restore "${{ env.PROJECT_FILE }}" -NonInteractive
+- name: Restore NuGet packages
+  shell: pwsh
+  run: nuget restore "${{ env.SOLUTION_FILE }}" -NonInteractive
 
       - name: Build to out\
         id: build
