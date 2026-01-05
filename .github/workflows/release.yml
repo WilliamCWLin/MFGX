@@ -4,108 +4,66 @@ on:
   push:
     tags:
       - "v*"
-      - "V*"
   workflow_dispatch:
 
+# 讓 GITHUB_TOKEN 有建立 Release / 上傳資產權限
 permissions:
   contents: write
 
 env:
   SOLUTION_FILE: AutoTestSystem.sln
-  PROJECT_FILE: AutoTestSystem/AutoTestSystem.csproj
   BUILD_CONFIGURATION: Release
+  BUILD_PLATFORM: "Any CPU"   # 若你專案是 x86，改成 "x86"
 
 jobs:
   build_and_release:
-    runs-on: windows-2022
+    runs-on: windows-2022  # 建議固定版本，避免 windows-latest 映像更新造成不穩定 :contentReference[oaicite:0]{index=0}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          lfs: true
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2
+        uses: microsoft/setup-msbuild@v2  # 把 msbuild 加到 PATH :contentReference[oaicite:1]{index=1}
 
       - name: Setup NuGet
-        uses: NuGet/setup-nuget@v2
+        uses: NuGet/setup-nuget@v2        # 讓 nuget.exe 可用 :contentReference[oaicite:2]{index=2}
 
       - name: Restore NuGet packages
         shell: pwsh
         run: nuget restore "${{ env.SOLUTION_FILE }}" -NonInteractive
 
-      - name: Build to out\
-        id: build
+      - name: Build (Release)
+        shell: pwsh
+        run: msbuild "${{ env.SOLUTION_FILE }}" /m /p:Configuration="${{ env.BUILD_CONFIGURATION }}" /p:Platform="${{ env.BUILD_PLATFORM }}"
+
+      - name: Package (zip)
         shell: pwsh
         run: |
           $ErrorActionPreference = "Stop"
 
-          $proj = "${{ env.PROJECT_FILE }}"
-          $cfg  = "${{ env.BUILD_CONFIGURATION }}"
+          # 找到最終輸出的 AutoTestSystem.exe（避免你有多專案/多路徑）
+          $exe = Get-ChildItem -Path . -Recurse -Filter "AutoTestSystem.exe" |
+                 Where-Object { $_.FullName -match "\\bin\\.*\\${{ env.BUILD_CONFIGURATION }}\\" } |
+                 Select-Object -First 1
 
-          if (-not (Test-Path $proj)) {
-            throw "找不到 PROJECT_FILE：$proj"
-          }
-
-          # 讀 csproj，抓出該 Configuration 下有哪些 Platform
-          $xml = Get-Content $proj -Raw
-          $rx  = "Condition\s*=\s*""\s*'\$\(\s*Configuration\s*\)\|\$\(\s*Platform\s*\)'\s*==\s*'$cfg\|([^']+)'\s*"""
-          $platforms = [regex]::Matches($xml, $rx) | ForEach-Object { $_.Groups[1].Value } | Select-Object -Unique
-
-          if (-not $platforms -or $platforms.Count -eq 0) {
-            $platforms = @("AnyCPU","Any CPU","x86","x64")
-          }
-
-          $pref = @("AnyCPU","Any CPU","x86","x64")
-          $plat = ($pref | Where-Object { $platforms -contains $_ } | Select-Object -First 1)
-          if (-not $plat) { $plat = $platforms[0] }
-
-          Write-Host ("Detected platforms for {0}: {1}" -f $cfg, ($platforms -join ", "))
-          Write-Host ("Using platform: {0}" -f $plat)
-
-          $out = Join-Path $env:GITHUB_WORKSPACE "out\"
-          New-Item -ItemType Directory -Force -Path $out | Out-Null
-
-          # 真的去編譯（重點：這段一定要存在）
-          msbuild $proj /m `
-            /p:Configuration="$cfg" `
-            /p:Platform="$plat" `
-            /p:BaseOutputPath="$out" `
-            /p:OutputPath="$out" `
-            /p:OutDir="$out"
-
-          # 驗證 exe 是否存在（不存在就直接 fail，避免「看起來成功但其實沒產物」）
-          $exe = Get-ChildItem -Path $out -Recurse -Filter "AutoTestSystem.exe" | Select-Object -First 1
           if (-not $exe) {
-            Write-Host "=== out\ listing ==="
-            Get-ChildItem -Path $out -Recurse | Select-Object FullName
-            throw "Build 完成但找不到 AutoTestSystem.exe（請確認 AssemblyName / OutputType / 專案啟動專案是否正確）"
+            throw "找不到 AutoTestSystem.exe。請確認專案輸出名稱/路徑，或改成直接 Copy-Item 你的 bin\\Release 資料夾。"
           }
-          Write-Host ("Found EXE: {0}" -f $exe.FullName)
 
-      - name: Package zip
-        id: pack
-        shell: pwsh
-        run: |
-          $ErrorActionPreference = "Stop"
+          $srcDir = Split-Path $exe.FullName -Parent
+          Write-Host "Packaging from: $srcDir"
+
+          New-Item -ItemType Directory -Force -Path dist | Out-Null
+          Copy-Item -Recurse -Force "$srcDir\*" dist\
 
           $zipName = "AutoTestSystem-${{ github.ref_name }}.zip"
           if (Test-Path $zipName) { Remove-Item $zipName -Force }
+          Compress-Archive -Path dist\* -DestinationPath $zipName -Force
 
-          Compress-Archive -Path "out\*" -DestinationPath $zipName -Force
-          Write-Host ("Created: {0}" -f $zipName)
+          Write-Host "Created: $zipName"
 
-          "zip=$zipName" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-
-      - name: Upload artifact (Actions)
-        uses: actions/upload-artifact@v4
-        with:
-          name: AutoTestSystem-${{ github.ref_name }}
-          path: ${{ steps.pack.outputs.zip }}
-
-      - name: Upload Release Asset (only tags)
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: Create GitHub Release + upload asset
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ steps.pack.outputs.zip }}
+          files: AutoTestSystem-${{ github.ref_name }}.zip
