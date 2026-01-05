@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - "v*"
+      - "V*"	  
   workflow_dispatch:
 
 # 讓 GITHUB_TOKEN 有建立 Release / 上傳資產權限
@@ -42,26 +43,39 @@ jobs:
         run: |
           $ErrorActionPreference = "Stop"
 
-          # 找到最終輸出的 AutoTestSystem.exe（避免你有多專案/多路徑）
-          $exe = Get-ChildItem -Path . -Recurse -Filter "AutoTestSystem.exe" |
-                 Where-Object { $_.FullName -match "\\bin\\.*\\${{ env.BUILD_CONFIGURATION }}\\" } |
+          # 1) 在整個 repo 內找 AutoTestSystem.exe
+          #    排除常見不可能的路徑，避免找到奇怪的中介檔
+          $exe = Get-ChildItem -Path . -Recurse -File -Filter "AutoTestSystem.exe" -ErrorAction SilentlyContinue |
+                 Where-Object {
+                   $_.FullName -notmatch "\\obj\\|\\\.vs\\|\\packages\\|\\TestResults\\|\\bin\\Debug\\"
+                 } |
+                 Sort-Object LastWriteTime -Descending |
                  Select-Object -First 1
 
           if (-not $exe) {
-            throw "找不到 AutoTestSystem.exe。請確認專案輸出名稱/路徑，或改成直接 Copy-Item 你的 bin\\Release 資料夾。"
+            Write-Host "=== 找不到 AutoTestSystem.exe，列出所有 bin 目錄供診斷 ==="
+            Get-ChildItem -Path . -Recurse -Directory -ErrorAction SilentlyContinue |
+              Where-Object { $_.FullName -match "\\bin\\" } |
+              Select-Object -First 50 FullName
+            throw "找不到 AutoTestSystem.exe。請先確認 Build step 是否真的有產生 exe（或 AssemblyName 是否不同）。"
           }
 
           $srcDir = Split-Path $exe.FullName -Parent
           Write-Host "Packaging from: $srcDir"
+          Write-Host "EXE: $($exe.FullName)"
 
+          # 2) 複製該輸出資料夾到 dist（避免壓到多餘檔案）
+          if (Test-Path dist) { Remove-Item dist -Recurse -Force }
           New-Item -ItemType Directory -Force -Path dist | Out-Null
           Copy-Item -Recurse -Force "$srcDir\*" dist\
 
+          # 3) 產生 zip
           $zipName = "AutoTestSystem-${{ github.ref_name }}.zip"
           if (Test-Path $zipName) { Remove-Item $zipName -Force }
           Compress-Archive -Path dist\* -DestinationPath $zipName -Force
 
           Write-Host "Created: $zipName"
+
 
       - name: Create GitHub Release + upload asset
         uses: softprops/action-gh-release@v2
